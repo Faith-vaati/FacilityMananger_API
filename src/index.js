@@ -1,22 +1,10 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
 const multer = require("multer");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const env = require("./configs/env");
 const Auths = require("./libs/Auths/Auths.route");
-const AgroProducts = require("./libs/AgroProducts/AgroProducts.route");
-const AgroDealers = require("./libs/AgroDealers/AgroDealers.route");
-const Farmers = require("./libs/Farmers/Farmers.route");
-const Orders = require("./libs/Orders/Orders.route");
-const Users = require("./libs/Users/Users.route");
-const Stores = require("./libs/Stores/Stores.route");
-const Farm = require("./libs/Farm/Farm.route");
-const FarmProduces = require("./libs/FarmProduces/FarmProduce.route");
-const Notifications = require("./libs/Notifications/Notifications.route");
-const FarmItem = require("./libs/FarmItem/FarmItem.route");
-const AgroItem = require("./libs/AgroItem/AgroItem.route");
 
 const app = express();
 
@@ -104,17 +92,7 @@ app.use("/imgs/farmproduce", express.static("uploads/FarmProduce"));
 app.use("/imgs/agroproducts", express.static("uploads/AgroProducts"));
 
 Auths.AuthRoutes(app);
-AgroProducts.AgroProductsRoutes(app);
-Farmers.FarmersRoutes(app);
-AgroDealers.AgroDealersRoutes(app);
-Orders.OrdersRoutes(app);
-Users.UsersRoutes(app);
-Stores.StoresRoutes(app);
-Farm.FarmRoutes(app);
-FarmProduces.FarmProduceRoutes(app);
-Notifications.NotificationsRoutes(app);
-FarmItem.FarmItemRoutes(app);
-AgroItem.AgroItemRoutes(app);
+
 
 app.listen(env.port, function () {
   console.log("app listening at port %s", env.port);
